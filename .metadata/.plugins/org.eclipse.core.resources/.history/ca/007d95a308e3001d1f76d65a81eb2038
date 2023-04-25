@@ -1,0 +1,10 @@
+package kr.or.dw.basic;
+
+public class jdbcTest01 {
+
+	public static void main(String[] args) {
+		// JDBC(Java DataBase Connectivity) 라이브러리를 이용한 DB자료 처리하기
+
+	}
+
+}
