@@ -74,10 +74,35 @@ public class PhoneBookTest {
 				System.out.println("등록이 완료되었습니다.");
 				break;
 			case 2:
-				
-				break;
+				System.out.println("수정할 사람의 이름을 입력하세요 > ");
+				String modify_name = sc.nextLine();
+				Phone modify_user = phoneBookList.get(modify_name);
+				System.out.println("수정할 전화번호를 입력하세요>");
+				String modify_tel = sc.nextLine();
+				System.out.println("수정할 주소를 입력하세요>");
+				String modify_addr = sc.nextLine();
+				System.out.println("수정할 나이를 입력하세요>");
+				int modify_age = Integer.parseInt(sc.nextLine());
+				modify_user.setAddr(modify_addr);
+				modify_user.setTel(modify_tel);
+				modify_user.setAge(modify_age);
+				phoneBookList.put(modify_name, modify_user);
+				System.out.println("수정을 완료했습니다.");
+;				break;
 			case 3:
-				
+				System.out.println("삭제할 사람의 이름을 입력하세요> ");
+				String remove_name = sc.nextLine();
+				phoneBookList.get(remove_name);
+				if(remove_name != null) {
+					System.out.println("선택한" + remove_name + "님을 삭제하시겠습니까?(yes, no)");
+					String yes = sc.nextLine();
+					if(yes.equals(yes)){
+						phoneBookList.remove(remove_name);
+						System.out.println("삭제가 완료되었습니다.");
+					}
+				}else {
+					System.out.println("존재하지 않는 이름입니다.");
+				}
 				break;
 			case 4:
 				System.out.println("검색할 사람의 이름을 입력하세요 > ");
@@ -88,7 +113,7 @@ public class PhoneBookTest {
 						System.out.println("이름\t\t전화번호\t\t나이\t\t주소");
 						System.out.println("---------------------------------------------------------------------");
 						System.out.println(key + "\t\t" + phoneBookList.get(key).getTel() + "\t\t"
-								+ phoneBookList.get(key).getAge() + "\t\t" + phoneBookList.get(key).getAddress());
+								+ phoneBookList.get(key).getAge() + "\t\t" + phoneBookList.get(key).getAddr());
 						System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 					}
 				}
@@ -101,7 +126,7 @@ public class PhoneBookTest {
 				for(String key : phoneBookList.keySet()) {
 					count++;
 					System.out.println(count + "\t" + key + "\t\t" + phoneBookList.get(key).getTel() + "\t\t"
-							+ phoneBookList.get(key).getAge() + "\t\t" + phoneBookList.get(key).getAddress());
+							+ phoneBookList.get(key).getAge() + "\t\t" + phoneBookList.get(key).getAddr());
 					System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");					
 				}
 				break;
@@ -135,11 +160,11 @@ class Phone {
 		this.tel = tel;
 	}
 
-	public String getAddress() {
+	public String getAddr() {
 		return addr;
 	}
 
-	public void setAddress(String addr) {
+	public void setAddr(String addr) {
 		this.addr = addr;
 	}
 
